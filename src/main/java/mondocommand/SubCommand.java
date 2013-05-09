@@ -145,7 +145,8 @@ public final class SubCommand {
     /**
      * Set the permission node this command requires
      * @param permission node, or null if no permission
-     * @return the SubCommand, useful for chaining. 
+     * @return the SubCommand, useful for chaining.
+     * @author tssge 
      */
     public SubCommand setPermission(String permission) {
     	this.permission = permission;
