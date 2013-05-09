@@ -23,7 +23,7 @@ public class MondoCommand implements CommandExecutor, SubHandler {
     private static final FormatConfig BASE_FORMAT = new FormatConfig();
     private static final SubHandler fallbackHandler = new FallbackHandler();
 
-    private final Map<String, SubCommand> subcommands = new LinkedHashMap<String, SubCommand>();
+    protected final Map<String, SubCommand> subcommands = new LinkedHashMap<String, SubCommand>();
     private final FormatConfig formatter;
     
     /**
@@ -122,7 +122,7 @@ public class MondoCommand implements CommandExecutor, SubHandler {
      * @return a new SubCommand.
      */
     public SubCommand addSub(String name, String permission) {
-        SubCommand cmd = new SubCommand(name, permission).setHandler(fallbackHandler);
+        SubCommand cmd = new SubCommand(name, permission, this).setHandler(fallbackHandler);
         subcommands.put(name.toLowerCase(), cmd);
         return cmd;
     }

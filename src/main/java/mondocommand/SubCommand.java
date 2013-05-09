@@ -1,5 +1,7 @@
 package mondocommand;
 
+import java.util.List;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.command.CommandSender;
 
@@ -9,23 +11,25 @@ import org.bukkit.command.CommandSender;
  *
  */
 public final class SubCommand {
-    private final String name;
+    private List<String> names;
     private String permission;
     private boolean allow_console = false;
     private int minArgs = 0;
     private SubHandler handler = null;
     private String description;
     private String usage = null;
+    private MondoCommand base;
     
     /**
      * Create a new SubCommand.
      * @param name The text of this subcommand.
      * @param permission The permission to check for this command. If null, don't use permissions.
      */
-    public SubCommand(String name, String permission) {
+    public SubCommand(String name, String permission, MondoCommand base) {
         Validate.notEmpty(name);
-        this.name = name;
+        this.names.add(0, name);
         this.permission = permission;
+        this.base = base;
     }
     
     /**
@@ -86,7 +90,7 @@ public final class SubCommand {
      * @return The command's name.
      */
     public String getName() {
-        return name;
+        return this.names.get(0);
     }
     
     /**
@@ -161,5 +165,42 @@ public final class SubCommand {
     public boolean checkPermission(CommandSender sender) {
         if (permission == null) return true;
         return sender.hasPermission(permission);
+    }
+    
+    /**
+     * Get aliases for this SubCommand
+     * @return all names of this SubCommand
+     * @author tssge
+     */
+    public List<String> getAliases() {
+    	return this.names;
+    }
+    
+    /**
+     * Add an alias/aliases for this subcommand
+     * @param name or names to add
+     * @return the SubCommand, useful for chaining
+     * @author tssge
+     */
+    public SubCommand addAliases(String[] names) {
+    	for(String s : names) {
+    		this.names.add(s);
+    		base.subcommands.put(s, this);
+    	}
+    	return this;
+    }
+    
+    /**
+     * Check if this subcommand has the alias
+     * @param the alias to check
+     * @return null if false, SubCommand if true
+     * @author tssge
+     */
+    public SubCommand isAlias(String alias) {
+    	if(this.names.contains(alias)) {
+    		return this;
+    	} else {
+    		return null;
+    	}
     }
 }
