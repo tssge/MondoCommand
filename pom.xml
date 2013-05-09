@@ -10,8 +10,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <api.version>unknown</api.version>
     <junit.version>4.11</junit.version>
+    <bukkitVersion>1.5.1-R0.3-SNAPSHOT</bukkitVersion>
   </properties>
 
   <scm>
@@ -44,8 +44,7 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.2.5-R5.0</version>
-      <type>jar</type>
+      <version>${bukkitVersion}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
