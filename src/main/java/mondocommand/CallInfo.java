@@ -131,7 +131,7 @@ public class CallInfo {
     }
 
     /**
-     * Re
+     * Respond to the call, interpolating colors and variables.
      * @param prefix if True, prefix the message with the formater's prefix.
      * @param template A string template. See {@link ChatMagic} documentation for more info.
      * @param args Zero or more arguments to interpolate the template.
