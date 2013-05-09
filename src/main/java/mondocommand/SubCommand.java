@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
  */
 public final class SubCommand {
     private final String name;
-    private final String permission;
+    private String permission;
     private boolean allow_console = false;
     private int minArgs = 0;
     private SubHandler handler = null;
@@ -140,6 +140,16 @@ public final class SubCommand {
      */
     public String getPermission() {
         return permission;
+    }
+    
+    /**
+     * Set the permission node this command requires
+     * @param permission node, or null if no permission
+     * @return the SubCommand, useful for chaining. 
+     */
+    public SubCommand setPermission(String permission) {
+    	this.permission = permission;
+    	return this;
     }
     
     /**
