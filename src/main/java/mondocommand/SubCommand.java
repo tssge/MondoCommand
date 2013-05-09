@@ -1,5 +1,6 @@
 package mondocommand;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -11,7 +12,7 @@ import org.bukkit.command.CommandSender;
  *
  */
 public final class SubCommand {
-    private List<String> names;
+    private List<String> names = new ArrayList<String>();
     private String permission;
     private boolean allow_console = false;
     private int minArgs = 0;
