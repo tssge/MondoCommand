@@ -186,7 +186,7 @@ public final class SubCommand {
     public SubCommand addAliases(String[] names) {
     	for(String s : names) {
     		this.names.add(s);
-    		base.subcommands.put(s, this);
+    		base.subcommands.put(s.toLowerCase(), this);
     	}
     	return this;
     }
