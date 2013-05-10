@@ -136,6 +136,16 @@ public class MondoCommand implements CommandExecutor, SubHandler {
         return addSub(name, null);
     }
     
+    /**
+     * Gets a SubCommand instance by it's name
+     * @param the name of the SubCommand
+     * @return SubCommand that represents the given name
+     * @author tssge
+     */
+    public SubCommand getSub(String name) {
+    	return this.subcommands.get(name);
+    }
+    
     private List<SubCommand> availableCommands(CommandSender sender, Player player) {
         ArrayList<SubCommand> items = new ArrayList<SubCommand>();
         boolean has_player = (player != null);
